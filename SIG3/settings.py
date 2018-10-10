@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'historico',
     'orientador',
     'orientando',
-    'comentario'
+    'comentario',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'SIG3.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['coordenador/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +124,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+STATIC_URL = '/static/'
+
+# Django - diretorios estaticos
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+# Django - Templates
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, "static", "template"),)
+

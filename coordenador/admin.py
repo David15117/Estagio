@@ -4,12 +4,26 @@ from django.contrib import admin
 from .models import Coordenador
 from .models import Orientador
 from .models import Orientando
-from .models import Acompanhamento
 from .models import Calendario
 
+class OrientandoInline(admin.TabularInline):
+    model = Orientando
+    extra = 0
 
 admin.site.register(Coordenador)
-admin.site.register(Orientador)
+
+@admin.register(Orientador)
+class OrientadorAdmin(admin.ModelAdmin):
+    list_display =('nome','cgu',)
+    search_fields = ('nome',)
+    inlines = [OrientandoInline]
+
 admin.site.register(Orientando)
-admin.site.register(Acompanhamento)
+
+
+class OrientadorInline(admin.TabularInline):
+    model = Orientador
+    extra = 0
+
+
 admin.site.register(Calendario)

@@ -33,20 +33,11 @@ class Orientando(models.Model):
         verbose_name_plural = 'Orientandos'
     nome = models.CharField(max_length=60)
     cgu = models.IntegerField()
+    orientor= models.ForeignKey(Orientador,on_delete=models.CASCADE,related_name='orientandos',blank=True,null=True)
 
     def __str__(self):
         return self.nome+' | '+str(self.cgu)
 
-#Adicionar Acompanhamentos
-class Acompanhamento(models.Model):
-    class Meta:
-        verbose_name = 'Acompanhamento'
-        verbose_name_plural = 'Acompanhamentos'
-    orientador = models.ForeignKey(Orientador, on_delete=models.CASCADE,null=True, blank=True)
-    orientando = models.OneToOneField(Orientando, on_delete=models.CASCADE,null=True, blank=True)
-
-    def __str__(self):
-        return self.orientador.nome
 
 #adicionar data orientação coordenador
 class Calendario(models.Model):
